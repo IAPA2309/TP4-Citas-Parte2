@@ -1,8 +1,19 @@
-import React from 'react'
+import React from 'react';
+import { toast } from 'sonner';
 import './Card.css'
 
-function Card({ cita }) {
+function Card({ cita, setCitas }) {
   const { mascota, propietario, fecha, hora, sintomas } = cita;
+
+  const eliminarCita = () => {
+    // Llamar a la función setCitas y pasar un callback para actualizar las citas
+    setCitas((citasActuales) => {
+      // Filtrar las citas y mantener solo las que no coinciden con la cita actual
+      const nuevasCitas = citasActuales.filter((c) => c !== cita);
+      return nuevasCitas;
+    });
+  };
+
 
   return (
     <div className="cita">
@@ -23,6 +34,14 @@ function Card({ cita }) {
       </p>
       <button
         className="button elimnar u-full-width"
+        onClick={() => {
+          toast.error("¿Elminar cita?", {
+            action: {
+              label: "Eliminar",
+              onClick: () => eliminarCita(),
+            },
+          });
+        }}
       >
         Eliminar ×
       </button>

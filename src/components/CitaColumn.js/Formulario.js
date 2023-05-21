@@ -42,6 +42,8 @@ function Formulario({ setCitas }) {
       setFecha("");
       setHora("");
       setSintomas("");
+
+      toast.success('La cita fue creada');
     }else{
       toast.error("Completar todos los campos");
     }

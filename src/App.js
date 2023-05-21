@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Toaster position="top-center" richColors/>
+      <Toaster position="top-center" richColors closeButton />
       <h1>Administrador de pacientes</h1>
       <div className="container">
         <div className="row">
